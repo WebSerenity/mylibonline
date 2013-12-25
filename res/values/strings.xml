@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="gen_ok">Ok</string>
+	<string name="gen_cancel">Annuler</string>
+	
+	<string name="error_titre">Erreur</string>
+	<string name="error_3G">Désolé, il n\'y a aucune connexion réseau.</string>
+	<string name="error_pas_trouve">Désolé, aucun livre n\' a été trouvé avec le code </string>
+    
+    <string name="app_name">My Lib On Line</string>
+    <string name="titre">Titres</string>
+    <string name="auteur">Auteurs</string>
+    <string name="pret">Prets</string>
+    <string name="achat">Achats</string>
+    
+    <string name="book_sup">Suppression d\'un livre</string>
+    <string name="book_sup_msg">Etes-vous sûr de vouloir supprimer : </string>
+    <string name="book_sup_fait">Le livre a été supprimé.</string>
+    
+    <string name="menu_scan">Scanner</string>
+    <string name="menu_search">Rechercher</string>
+    <string name="menu_cat">Catégories</string>
+    <string name="menu_export_db">Export DB</string>
+    <string name="menu_import_db">Import DB</string>
+    <string name="menu_help">Aide</string>
+    <string name="menu_about">A propos</string>
+    
+    <string name="fiche_cat">Catégories</string>
+	<string name="fiche_resume">Résumé</string>
+	<string name="fiche_comment">Commentaires</string>
+	<string name="fiche_isbn">Non défini</string>
+	<string name="fiche_resume_info">Aucun résumé</string>
+	
+	<string name="cat_titre">Liste des catégories</string>
+	<string name="cat_sup_titre">Suppression d\'une catégorie</string>
+	<string name="cat_sup_msg">Etes-vous sûr de vouloir supprimer la catégorie : </string>
+	<string name="cat_sup_msg_fin_1">La catégorie </string>
+	<string name="cat_sup_msg_fin_2">a été supprimée </string>
+	<string name="cat_add_titre">Ajouter une catégorie</string>
+	<string name="cat_update_titre">Mettre à jour une catégorie</string>
+	
+	<string name="msg_default_status">Placer le barcode à scanner au milieu du rectangle</string>
+	<string name="msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
+	
+	<string name="camera_stop">Stop</string>
+	<string name="camera_scan">Scanning ...</string>
+	
+	<string name="export_fin">Export terminé</string>
+	<string name="import_titre">Import des données</string>
+	<string name="import_deb">Le fichier doit être dans Download</string>
+	<string name="import_fin">Import terminé</string>
+	<string name="import_error">Désolé,, une erreur est survenue lors de l\'import</string>
+	
+</resources>

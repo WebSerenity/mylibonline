@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/BackgroundGris"
+    android:orientation="vertical"
+    android:paddingBottom="35dp" >
+    
+    <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" 
+        android:paddingBottom="15dp"
+    	android:paddingTop="15dp"
+   		android:background="@color/BackgroundGris">
+
+	    <!-- Debut zone active -->
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:id="@+id/tvTitre"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_horizontal"
+	            android:text="Titre"
+	            android:textColor="@color/VertTitre"
+	            android:textSize="24sp" />
+	
+	    </LinearLayout>
+	    
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:id="@+id/tvSousTitre"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_horizontal"
+	            android:text="Sous Titre"
+	            android:textColor="@color/VertTitre"
+	            android:textSize="18sp"
+	            android:textStyle="italic" />
+	
+	    </LinearLayout>
+	
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:paddingTop="15dp"
+	        android:paddingBottom="15dp"  >
+	
+	        <TextView
+	            android:id="@+id/tvAuteur"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_horizontal"
+	            android:text="Auteur"
+	            android:textColor="@color/VertAuteur"
+	            android:textSize="18sp" />
+	
+	    </LinearLayout>
+	    
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@color/VertTitreSombre"
+	        android:orientation="horizontal"
+	        android:paddingBottom="15dp"
+	        android:paddingTop="15dp" >
+	
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:gravity="center_horizontal"
+	            android:orientation="horizontal" >
+	
+	            <ImageView
+	                android:id="@+id/ivLu"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:src="@drawable/ic_lu_on" />
+	
+	    	</LinearLayout>
+	
+	    	<LinearLayout
+	    	    android:layout_width="match_parent"
+	    	    android:layout_height="wrap_content"
+	    	    android:layout_weight="1"
+	    	    android:gravity="center_horizontal"
+	    	    android:orientation="horizontal" >
+	
+	            <ImageView
+	                android:id="@+id/ivAchat"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:src="@drawable/ic_acheter_on" />
+	
+	    	</LinearLayout>
+	    	
+	    	<LinearLayout
+	    	    android:layout_width="match_parent"
+	    	    android:layout_height="wrap_content"
+	    	    android:layout_weight="1"
+	    	    android:gravity="center_horizontal"
+	    	    android:orientation="horizontal" >
+	
+	            <ImageView
+	                android:id="@+id/ivPret"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:src="@drawable/ic_pret_on" />
+	
+	    	</LinearLayout>
+	    	
+	    </LinearLayout>
+	    
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@color/VertTitreSombre"
+	        android:orientation="horizontal"
+	        android:paddingBottom="15dp"
+	        android:paddingTop="15dp" >
+	    	
+	    	<LinearLayout
+	    	    android:layout_width="match_parent"
+	    	    android:layout_height="wrap_content"
+	    	    android:layout_weight="1"
+	    	    android:gravity="center_horizontal"
+	    	    android:orientation="horizontal" >
+	
+	            <RatingBar
+	                android:id="@+id/rbNote"
+	                style="@style/bookRatingBar"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:progressDrawable="@drawable/drawable_book_rating_bar" />
+	
+	    	</LinearLayout>
+	    	
+	    	<LinearLayout
+	    	    android:layout_width="match_parent"
+	    	    android:layout_height="match_parent"
+	    	    android:layout_weight="1"
+	    	    android:gravity="center"
+	    	    android:orientation="horizontal" >
+	
+	            <TextView
+	                android:id="@+id/tvFamille"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="@string/fiche_cat"
+	                android:textColor="@color/VertAuteur" />
+	
+	    	</LinearLayout>
+	    </LinearLayout>
+	    
+	   <LinearLayout
+	       android:layout_width="match_parent"
+	       android:layout_height="wrap_content"
+	       android:background="@color/VertTitreSombre"
+	       android:orientation="horizontal" >
+
+	       <LinearLayout
+	           android:layout_width="match_parent"
+	           android:layout_height="wrap_content"
+	           android:layout_weight="1"
+	           android:gravity="center_horizontal"
+	           android:orientation="vertical" >
+	           <ImageView
+	               android:id="@+id/ivISBN"
+	               android:layout_width="wrap_content"
+	               android:layout_height="wrap_content"
+	               android:src="@drawable/ic_scan" />
+	       </LinearLayout>
+	       <LinearLayout
+	           android:layout_width="match_parent"
+	           android:layout_height="match_parent"
+	           android:layout_weight="1"
+	           android:gravity="center"
+	           android:orientation="vertical" >
+
+	           <TextView
+	               android:id="@+id/tvISBN"
+	               android:layout_width="wrap_content"
+	               android:layout_height="wrap_content"
+	               android:layout_gravity="center"
+	               android:text="isbn"
+	               android:textColor="@color/VertTitre"
+	               android:textSize="24sp" />
+
+	       </LinearLayout>
+	    </LinearLayout>
+	    
+	
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:paddingLeft="15dp"
+	        android:paddingRight="15dp"
+	        android:orientation="vertical" >
+	        <TextView
+	            android:id="@+id/tvResumeTitre"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="@string/fiche_resume"
+	            android:textColor="@color/VertTitre"
+	            android:textSize="18sp" >
+	        </TextView>
+	        <TextView
+	            android:id="@+id/tvResume"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Sed tamen haec cum ita tutius observentur, quidam vigore artuum inminuto rogati ad nuptias ubi aurum dextris manibus cavatis offertur, inpigre vel usque Spoletium pergunt. haec nobilium sunt instituta.Sed tamen haec cum ita tutius observentur, quidam vigore artuum inminuto rogati ad nuptias ubi aurum dextris manibus cavatis offertur, inpigre vel usque Spoletium pergunt. haec nobilium sunt instituta."
+	            android:textColor="@color/VertAuteur" />
+	    </LinearLayout>
+	    
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical"
+	        android:paddingLeft="15dp"
+	        android:paddingRight="15dp" >
+
+	        <TextView
+	            android:id="@+id/tvCommentTitre"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="@string/fiche_comment"
+	            android:textColor="@color/VertTitre"
+	            android:textSize="18sp">
+	        </TextView>
+	        <TextView
+	            android:id="@+id/tvComment"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Sed tamen haec cum ita tutius observentur, quidam vigore artuum inminuto rogati ad nuptias ubi aurum dextris manibus cavatis offertur, inpigre vel usque Spoletium pergunt. haec nobilium sunt instituta.Sed tamen haec cum ita tutius observentur, quidam vigore artuum inminuto rogati ad nuptias ubi aurum dextris manibus cavatis offertur, inpigre vel usque Spoletium pergunt. haec nobilium sunt instituta."
+	            android:textColor="@color/VertAuteur" />
+	
+	    </LinearLayout>
+		<!-- Fin zone active -->
+		</LinearLayout>
+	    
+	
+	</ScrollView>
+</LinearLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menuScan"
+        android:icon="@drawable/ic_scan"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_scan">
+    </item>
+    <item
+        android:id="@+id/menuSearch"
+        android:icon="@android:drawable/ic_menu_search"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_search">
+    </item>
+    <item
+        android:id="@+id/menuCat"
+        android:icon="@drawable/cat"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_cat">
+    </item>
+    <item
+        android:id="@+id/menuExportDB"
+        android:icon="@drawable/export"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_export_db">
+    </item>
+    <item
+        android:id="@+id/menuImportDB"
+        android:icon="@drawable/export"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_import_db">
+    </item>
+    <item
+        android:id="@+id/menuHelp"
+        android:icon="@android:drawable/ic_menu_help"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_help">
+    </item>
+    <item
+        android:id="@+id/menuAbout"
+        android:showAsAction="ifRoom"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="@string/menu_about">
+    </item>
+
+
+</menu>
