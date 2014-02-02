@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
-    <color name="VertTitre">#A6B200</color>
-    <color name="VertTitreSombre">#535900</color>
-    <color name="VertAuteur">#CAD166</color>
-    <color name="VertClair">#C1C94D</color>
-    <color name="GrisAndroid">#A4A4A4</color>
+    <color name="VertTitre">#FFA6B200</color>
+    <color name="VertTitreSombre">#FF535900</color>
+    <color name="VertAuteur">#FFCAD166</color>
+    <color name="VertClair">#FFC1C94D</color>
+    <color name="GrisAndroid">#FFA4A4A4</color>
    
     <color name="BackgroundGris">#394040</color>
     

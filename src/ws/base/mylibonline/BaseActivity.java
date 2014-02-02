@@ -11,6 +11,7 @@ import ws.base.mylibonline.utils.DatabaseCat;
 import ws.base.mylibonline.utils.SqLiteBook;
 import ws.base.mylibonline.utils.Params;
 
+import android.app.Activity;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Point;
@@ -26,7 +27,19 @@ public class BaseActivity extends FragmentActivity{
 	
 	public static DatabaseBook databaseBook;
 	public static ArrayList<Book> listBook = new ArrayList<Book>();
+	public static ArrayList<Book> listAuteur = new ArrayList<Book>();
+	public static ArrayList<Book> listLu = new ArrayList<Book>();
+	public static ArrayList<Book> listLuNon = new ArrayList<Book>();
+	public static ArrayList<Book> listAchat = new ArrayList<Book>();
+	public static ArrayList<Book> listAchatNon = new ArrayList<Book>();
+	public static ArrayList<Book> listPret = new ArrayList<Book>();
 	public static int nbrBook = 0;
+	public static int nbrAuteur = 0;
+	public static int nbrLu = 0;
+	public static int nbrLuNon = 0;
+	public static int nbrAchat = 0;
+	public static int nbrAchatNon = 0;
+	public static int nbrPret = 0;
 	
 	public static DatabaseCat databaseCat;
 	public static ArrayList<Cat> listCat = new ArrayList<Cat>();
@@ -38,6 +51,7 @@ public class BaseActivity extends FragmentActivity{
 	public static int ScreenHeightPopup;
 	
 	protected Context context;
+	protected Activity activity;
 	
 	//gestion des fragments
 	public static boolean mIsDualPane = false;
@@ -51,7 +65,7 @@ public class BaseActivity extends FragmentActivity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_layout);
 		context = getApplicationContext();
-		
+		activity = this;
 		if (Params.TAG_FG_DEBUG && fgDebugLocal){Log.i(Params.TAG_GEN, TAG_LOCAL + "Start BaseActivity");};
 		
 		strPackage = getApplicationContext().getPackageName();
@@ -83,6 +97,10 @@ public class BaseActivity extends FragmentActivity{
 		listBook = databaseBook.getListBookTitre();
 		nbrBook = listBook.size();
 		if (Params.TAG_FG_DEBUG && fgDebugLocal){Log.i(Params.TAG_GEN, TAG_LOCAL + "nbrBook = " + nbrBook);};
+		
+		listAuteur = databaseBook.getListBookAuteur();
+		nbrAuteur = listAuteur.size();
+		if (Params.TAG_FG_DEBUG && fgDebugLocal){Log.i(Params.TAG_GEN, TAG_LOCAL + "nbrAuteur = " + nbrAuteur);};
 		
         //gestion des familles
 		databaseCat = new DatabaseCat(getApplicationContext());

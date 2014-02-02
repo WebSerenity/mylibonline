@@ -6,6 +6,7 @@ import java.util.concurrent.ExecutionException;
 
 import org.w3c.dom.ls.LSInput;
 
+
 import ws.base.modeles.Book;
 import ws.base.modeles.Cat;
 import ws.base.mylibonline.BookLinesFragment.OnHeadlineSelectedListenerLong;
@@ -15,6 +16,8 @@ import ws.base.mylibonline.utils.GestionCat;
 import ws.base.mylibonline.utils.LanceAsync;
 import ws.base.mylibonline.utils.Params;
 import ws.base.mylibonline.utils.Tools;
+import ws.zxing.scan.IntentIntegratorSupportV4;
+import ws.zxing.scan.ToolsZXing;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -39,6 +42,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.SpinnerAdapter;
@@ -58,6 +62,7 @@ public class Home extends BaseActivity implements BookLinesFragment.OnHeadlineSe
     private MenuItem menuItem;
     private String strISBN = "";
     private String isbn13 = "";
+    //private Activity activity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,7 +75,7 @@ public class Home extends BaseActivity implements BookLinesFragment.OnHeadlineSe
         // Determine whether we are in single-pane or dual-pane mode by testing the visibility
         // of the article view.
         View articleView = findViewById(R.id.article);
-       
+        //activity = context;
         
         mIsDualPane = articleView != null && articleView.getVisibility() == View.VISIBLE;
 
@@ -131,9 +136,36 @@ public class Home extends BaseActivity implements BookLinesFragment.OnHeadlineSe
         // Set up a CompatActionBarNavHandler to deliver us the Action Bar nagivation events
         CompatActionBarNavHandler handler = new CompatActionBarNavHandler(this);
         if (showTabs) {
+        	String strList = "";
             actionBar.setNavigationMode(android.app.ActionBar.NAVIGATION_MODE_TABS);
             for (int i = 0; i < Params.CATEGORIES.length; i++) {
-                actionBar.addTab(actionBar.newTab().setText(Params.CATEGORIES[i]).setTabListener(handler));
+            	switch (i) {
+				case 0:
+					strList = Params.CATEGORIES[i] + "(" + nbrBook + ")";
+					break;
+				case 1:
+					strList = Params.CATEGORIES[i] + "(" + nbrAuteur + ")";
+					break;
+				case 2:
+					strList = Params.CATEGORIES[i] + "(" + nbrLu + ")";
+					break;
+				case 3:
+					strList = Params.CATEGORIES[i] + "(" + nbrLuNon + ")";
+					break;
+				case 4:
+					strList = Params.CATEGORIES[i] + "(" + nbrAchat + ")";
+					break;
+				case 5:
+					strList = Params.CATEGORIES[i] + "(" + nbrAchatNon + ")";
+					break;
+				case 6:
+					strList = Params.CATEGORIES[i] + "(" + nbrPret + ")";
+					break;
+
+				default:
+					break;
+				}
+                actionBar.addTab(actionBar.newTab().setText(strList).setTabListener(handler));
             }
             actionBar.setSelectedNavigationItem(selTab);
         }
@@ -236,28 +268,45 @@ public class Home extends BaseActivity implements BookLinesFragment.OnHeadlineSe
     	if (Params.CATEGORIES[catIndex] == Params.CATEGORIES[1]){
     		listBook.clear();
     	    listBook = databaseBook.getListBookAuteur();
+    	    nbrAuteur = listBook.size();
+    	    if (Params.TAG_FG_DEBUG && fgDebugLocal){Log.i(Params.TAG_GEN, TAG_LOCAL + "nbrAuteur = " + nbrAuteur);};
     	}
     	
     	if (Params.CATEGORIES[catIndex] == Params.CATEGORIES[2]){
     		listBook.clear();
     	    listBook = databaseBook.getListBookLu();
+       	    nbrLu = listBook.size();
+    	    if (Params.TAG_FG_DEBUG && fgDebugLocal){Log.i(Params.TAG_GEN, TAG_LOCAL + "nbrLu = " + nbrLu);};
+
     	}
     	if (Params.CATEGORIES[catIndex] == Params.CATEGORIES[3]){
     		listBook.clear();
     	    listBook = databaseBook.getListBookLuNon();
+       	    nbrLuNon = listBook.size();
+    	    if (Params.TAG_FG_DEBUG && fgDebugLocal){Log.i(Params.TAG_GEN, TAG_LOCAL + "nbrLuNon = " + nbrLuNon);};
+
     	}
     	
     	if (Params.CATEGORIES[catIndex] == Params.CATEGORIES[4]){
     		listBook.clear();
     	    listBook = databaseBook.getListBookAchat();
+       	    nbrAchat = listBook.size();
+    	    if (Params.TAG_FG_DEBUG && fgDebugLocal){Log.i(Params.TAG_GEN, TAG_LOCAL + "nbrAchat = " + nbrAchat);};
+
     	}
     	if (Params.CATEGORIES[catIndex] == Params.CATEGORIES[5]){
     		listBook.clear();
     	    listBook = databaseBook.getListBookAchatNon();
+       	    nbrAchatNon = listBook.size();
+    	    if (Params.TAG_FG_DEBUG && fgDebugLocal){Log.i(Params.TAG_GEN, TAG_LOCAL + "nbrAchatNon = " + nbrAchatNon);};
+
     	}
     	if (Params.CATEGORIES[catIndex] == Params.CATEGORIES[6]){
     		listBook.clear();
     	    listBook = databaseBook.getListBookPret();
+       	    nbrPret = listBook.size();
+    	    if (Params.TAG_FG_DEBUG && fgDebugLocal){Log.i(Params.TAG_GEN, TAG_LOCAL + "nbrPret = " + nbrPret);};
+
     	}
 	    
         setNewsCategory(catIndex);
@@ -303,6 +352,10 @@ public class Home extends BaseActivity implements BookLinesFragment.OnHeadlineSe
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.menuScan:
+			//ws.zxing.scan.IntentIntegrator integrator = new ws.zxing.scan.IntentIntegrator(Home.this);
+			//integrator.
+			//integrator.setIntExtra("SCAN_RESULT_ORIENTATION", Integer.MIN_VALUE);
+			//integrator.initiateScan();
 			Intent intent = new Intent(Home.this, ScanCode.class);
 			startActivityForResult(intent, CAMERA_REQUEST_CODE);
 			menuItem = item;	//utilise par LanceAsynch
@@ -363,10 +416,67 @@ public class Home extends BaseActivity implements BookLinesFragment.OnHeadlineSe
 	
 	
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+    	/*
+    	ws.zxing.scan.IntentResult result = IntentIntegratorSupportV4.parseActivityResult(requestCode, resultCode, intent);
+        if (result != null) {
+          String contents = result.getContents();
+          if (contents != null) {
+        	  Toast.makeText(context, result.getContents(), Toast.LENGTH_LONG).show();
+        	  strISBN = result.getContents();
+	  			if (strISBN == "" || strISBN == null || strISBN.length() < 10){
+	  				return;
+	  			}
+	  			if (Params.TAG_FG_DEBUG && fgDebugLocal){Log.i(Params.TAG_GEN, TAG_LOCAL + "strISBN = " + strISBN);};
+	  			isbn13 = strISBN;
+	  			//In DB
+					Book book = databaseBook.getLivreByISBN(strISBN);
+					if (book != null){
+						if (Params.TAG_FG_DEBUG && fgDebugLocal){Log.i(Params.TAG_GEN, TAG_LOCAL + "Trouve = " + book.getTitre());};
+						afficheArticle(book);
+						return;
+					}else{
+						if (Params.TAG_FG_DEBUG && fgDebugLocal){Log.i(Params.TAG_GEN, TAG_LOCAL + "Pas trouve en base");};
+						
+						//String url = "https://www.googleapis.com/books/v1/volumes?q=isbn:9782811204051&key=AIzaSyCj0iZndMfGU5939TpSndhEKS2XQVk24lw";
+		    			String url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + strISBN + "&key=AIzaSyCj0iZndMfGU5939TpSndhEKS2XQVk24lw";
+		    			//String url = "https://www.googleapis.com/books/v1/volumes?q=intitle:Cendrecoeur&key=AIzaSyCj0iZndMfGU5939TpSndhEKS2XQVk24lw";
+		    			if (Params.TAG_FG_DEBUG && fgDebugLocal){Log.i(Params.TAG_GEN, TAG_LOCAL + "url = " + url);};
+		    			DetectInternet detectInternet = new DetectInternet(getApplicationContext());
+		    			boolean isInternet = detectInternet.isConnectingToInternet();
+		    			if (isInternet){
+		    				if (Params.TAG_FG_DEBUG && fgDebugLocal){Log.i(Params.TAG_GEN, TAG_LOCAL + "Connected");};
+		    				LanceAsync lanceAsync = new LanceAsync(menuItem, url, strISBN );
+		    				lanceAsync.delegate = this;
+		    				lanceAsync.execute();
+		    				
+		    			}else{
+		    				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		    				builder.setTitle(getResources().getString(R.string.error_titre));
+		    				String msg = getResources().getString(R.string.error_3G);
+		    				builder.setMessage(msg);
+		    				builder.setPositiveButton(getResources().getString(R.string.gen_ok), new DialogInterface.OnClickListener() {
+		    					public void onClick(DialogInterface dialog, int id) {
+		    					}
+		    				});
+		    				AlertDialog alertDialog = builder.create();
+		    				alertDialog.show();
+		    			}
+					}
+	        	  //ToolsZXing.getEAN(result.getContents());
+	        	  //showDialog(R.string.result_succeeded, result.toString());
+	          } else {
+	        	  Toast.makeText(context, "erreur", Toast.LENGTH_LONG).show();
+	        	  //showDialog(R.string.result_failed, getString(R.string.result_failed_why));
+	          }
+        }
+    	
+    	*/
+    	
+    	
     	if (resultCode == RESULT_OK && requestCode == CAMERA_REQUEST_CODE) {
-    		if (data.hasExtra("ean")) {
-    			strISBN = data.getExtras().getString("ean");
+    		if (intent.hasExtra("ean")) {
+    			strISBN = intent.getExtras().getString("ean");
     			if (strISBN == "" || strISBN == null || strISBN.length() < 10){
     				return;
     			}
@@ -409,6 +519,7 @@ public class Home extends BaseActivity implements BookLinesFragment.OnHeadlineSe
     			
     		}
     	}
+    	
     }
     
     @Override
@@ -443,8 +554,14 @@ public class Home extends BaseActivity implements BookLinesFragment.OnHeadlineSe
 			builder.setTitle(getResources().getString(R.string.error_titre));
 			String msg = getResources().getString(R.string.error_pas_trouve) + " : " + isbn13;
 			builder.setMessage(msg);
+			builder.setNegativeButton(getResources().getString(R.string.gen_no), new DialogInterface.OnClickListener(){
+				@Override
+				public void onClick(DialogInterface dialog,int which) {
+					
+				}});
 			builder.setPositiveButton(getResources().getString(R.string.gen_ok), new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int id) {
+					showPopupISBN(activity);
 				}
 			});
 			AlertDialog alertDialog = builder.create();
@@ -476,7 +593,53 @@ public class Home extends BaseActivity implements BookLinesFragment.OnHeadlineSe
     	menuItem.collapseActionView();
 		menuItem.setActionView(null);
     }
-
 	
+	
+	private void showPopupISBN(final Activity activity) {
+
+    	LinearLayout viewGroup = (LinearLayout) activity.findViewById(R.id.popupISBN);
+    	LayoutInflater layoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    	View popupViewISBN = layoutInflater.inflate(R.layout.isbn, viewGroup);
+    	 
+    	//Creating the PopupWindow
+    	final PopupWindow popupWindow = new PopupWindow(popupViewISBN, LayoutParams.WRAP_CONTENT,  LayoutParams.WRAP_CONTENT, true);
+    	popupWindow.setContentView(popupViewISBN);
+    	popupWindow.setFocusable(true);
+    	popupWindow.showAtLocation(popupViewISBN, Gravity.CENTER,0,0);
+    	
+    	TextView tvTitre = (TextView)popupViewISBN.findViewById(R.id.tvISBN);
+
+	    Button btCancel = (Button)popupViewISBN.findViewById(R.id.btISBNCancel);
+	    btCancel.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				popupWindow.dismiss();
+			}
+		});
+	    
+	    final EditText etISBN = (EditText)popupViewISBN.findViewById(R.id.etISBN);
+		
+		etISBN.setText(isbn13);
+		
+	    Button btOk = (Button)popupViewISBN.findViewById(R.id.btISBNValid);
+	    btOk.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				String newISBN = etISBN.getText().toString();
+				//Toast.makeText(activity.getApplicationContext(), newISBN, Toast.LENGTH_SHORT).show();
+				String url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + newISBN + "&key=AIzaSyCj0iZndMfGU5939TpSndhEKS2XQVk24lw";
+    			if (Params.TAG_FG_DEBUG && fgDebugLocal){Log.i(Params.TAG_GEN, TAG_LOCAL + "url = " + url);};
+    			popupWindow.dismiss();
+    			LanceAsync lanceAsync = new LanceAsync(menuItem, url, strISBN );
+				lanceAsync.delegate = (AsyncResponse) activity;
+				lanceAsync.execute();
+				
+			}
+		});
+    	
+
+    }
     
 }

@@ -46,10 +46,14 @@ public class Tools {
 
 	public static String convertDateEnToFr(String strGB){
 		String[] strInfo = strGB.split("-");
-		
-		String strFR = strInfo[2] + "/" +  strInfo[1] + "/" + strInfo[0];
-		return strFR.replace(" ", "");
-		
+		String str = "";
+		if (strInfo.length == 3){
+			String strFR = strInfo[2] + "/" +  strInfo[1] + "/" + strInfo[0];
+			str = strFR.replace(" ", "");
+		}else{
+			str = strGB;
+		}
+		return str;
 	}
 	
 	public static void exportDB(){

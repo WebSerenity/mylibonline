@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="gen_ok">Ok</string>
+	<string name="gen_no">Non</string>
 	<string name="gen_cancel">Annuler</string>
 	
 	<string name="error_titre">Erreur</string>
 	<string name="error_3G">Désolé, il n\'y a aucune connexion réseau.</string>
-	<string name="error_pas_trouve">Désolé, aucun livre n\' a été trouvé avec le code </string>
+	<string name="error_pas_trouve">Désolé, aucun livre n\' a été trouvé avec le code. \nVoulez-vous modifier le code ISBN ?  </string>
+	<string name="popup_isbn_titre">Taper le code ISBN</string>
     
     <string name="app_name">My Lib On Line</string>
     <string name="titre">Titres</string>

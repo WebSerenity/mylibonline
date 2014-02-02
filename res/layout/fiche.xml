@@ -219,6 +219,7 @@
 	            android:id="@+id/tvResume"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
+	            android:background="@drawable/border"
 	            android:text="Sed tamen haec cum ita tutius observentur, quidam vigore artuum inminuto rogati ad nuptias ubi aurum dextris manibus cavatis offertur, inpigre vel usque Spoletium pergunt. haec nobilium sunt instituta.Sed tamen haec cum ita tutius observentur, quidam vigore artuum inminuto rogati ad nuptias ubi aurum dextris manibus cavatis offertur, inpigre vel usque Spoletium pergunt. haec nobilium sunt instituta."
 	            android:textColor="@color/VertAuteur" />
 	    </LinearLayout>
@@ -238,12 +239,15 @@
 	            android:textColor="@color/VertTitre"
 	            android:textSize="18sp">
 	        </TextView>
-	        <TextView
-	            android:id="@+id/tvComment"
+	        <EditText
+	            android:id="@+id/edComment"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
+	            android:background="@drawable/border"
 	            android:text="Sed tamen haec cum ita tutius observentur, quidam vigore artuum inminuto rogati ad nuptias ubi aurum dextris manibus cavatis offertur, inpigre vel usque Spoletium pergunt. haec nobilium sunt instituta.Sed tamen haec cum ita tutius observentur, quidam vigore artuum inminuto rogati ad nuptias ubi aurum dextris manibus cavatis offertur, inpigre vel usque Spoletium pergunt. haec nobilium sunt instituta."
-	            android:textColor="@color/VertAuteur" />
+	            android:textColor="@color/VertAuteur"
+	            android:lines="5"
+	             />
 	
 	    </LinearLayout>
 		<!-- Fin zone active -->

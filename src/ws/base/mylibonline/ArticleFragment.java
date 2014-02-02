@@ -21,6 +21,7 @@ import android.view.Window;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -45,7 +46,7 @@ public class ArticleFragment extends Fragment {
 	private TextView tvFamille;
 	private TextView tvISBN;
 	private TextView tvResume;
-	private TextView tvComment;
+	private EditText etComment;
 	
 	private ImageView ivLu;
 	private ImageView ivAchat;
@@ -126,7 +127,7 @@ public class ArticleFragment extends Fragment {
     	tvFamille = (TextView)rootView.findViewById(R.id.tvFamille);
     	tvISBN = (TextView)rootView.findViewById(R.id.tvISBN);
     	tvResume = (TextView)rootView.findViewById(R.id.tvResume);
-    	tvComment = (TextView)rootView.findViewById(R.id.tvComment);
+    	etComment = (EditText)rootView.findViewById(R.id.edComment);
     	
     	tvTitre.setText(titre);
     	tvTitre.setOnClickListener(new View.OnClickListener() {
@@ -165,7 +166,7 @@ public class ArticleFragment extends Fragment {
     	tvISBN.setText(ISBN);
     	
     	tvResume.setText(resume);
-    	tvComment.setText(comment);
+    	//etComment.setText(comment);
     	
     	ivLu = (ImageView)rootView.findViewById(R.id.ivLu);
     	if (!fgLu){

@@ -19,6 +19,7 @@ package ws.base.mylibonline;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,7 @@ import java.util.Set;
 
 
 import ws.base.modeles.Book;
+import ws.base.mylibonline.utils.Params;
 
 /**
  * Fragment that displays the news headlines for a particular news category.
@@ -47,7 +49,11 @@ import ws.base.modeles.Book;
  * When an item is selected, it notifies the configured listener that a headlines was selected.
  */
 public class BookLinesFragment extends ListFragment implements OnItemClickListener, OnItemLongClickListener {
-    // The list of headlines that we are displaying
+	private String TAG_LOCAL = "BookLinesFragment - ";
+	private boolean fgDebugLocal = true;
+	private int posChoix = 0;
+	
+	// The list of headlines that we are displaying
 	private ArrayList<String> headlinesList = new ArrayList<String>();
 
     // The list adapter for the list we are displaying
@@ -146,7 +152,8 @@ public class BookLinesFragment extends ListFragment implements OnItemClickListen
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (null != mHeadlineSelectedListener) {
-            mHeadlineSelectedListener.onHeadlineSelected(position);
+        	mHeadlineSelectedListener.onHeadlineSelected(position);
+            posChoix = position;
         }
     }
     
@@ -175,7 +182,12 @@ public class BookLinesFragment extends ListFragment implements OnItemClickListen
     }
 
 	
-
+    @Override
+    public void onResume() {
+    	// TODO Auto-generated method stub
+    	super.onResume();
+    	getListView().setSelection(posChoix);
+    }
 	
     
 
